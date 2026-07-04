@@ -1,5 +1,5 @@
 ---
-title: "Composerオートロードで冗長になったrequire_onceを静的解析で検出する仕組みと、踏んだバグの話"
+title: "Composerオートロードで冗長になったrequire_onceを静的解析で検出する"
 emoji: "🧹"
 type: "tech"
 topics: ["php", "composer", "静的解析", "oss", "cli"]
