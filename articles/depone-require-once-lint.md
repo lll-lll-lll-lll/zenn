@@ -139,6 +139,7 @@ require_once (dirname(__FILE__)) . '/../src/Foo.php';
 ```php
 public function readIncludeExprTokens(array $tokens, int $index): array
 {
+    $count  = count($tokens);
     $cursor = $index + 1;
     TokenHelper::skipTrivia($tokens, $cursor);
 
@@ -186,8 +187,9 @@ class LegacyHelpers { /* ... */ }
 
 ```php
 $resolver = new AutoloadResolver($this->repoRoot);
-foreach ($candidateFiles as $filePath) {
-    foreach ($classExtractor->extract($filePath) as $className) {
+foreach (array_keys($candidateFiles) as $filePath) {
+    $content = file_get_contents($filePath);
+    foreach ($classExtractor->extract($content) as $className) {
         $resolved = $resolver->resolve($className);
         if ($resolved !== null
             && PathHelper::normalize($resolved) === PathHelper::normalize($filePath)) {
